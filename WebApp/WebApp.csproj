@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\COMMIT_EDITMSG" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\config" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\description" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\FETCH_HEAD" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\HEAD" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\applypatch-msg.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\commit-msg.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\post-update.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\pre-applypatch.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\pre-commit.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\pre-merge-commit.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\pre-push.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\pre-rebase.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\pre-receive.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\push-to-checkout.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\hooks\update.sample" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\index" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\info\exclude" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\logs\HEAD" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\logs\refs\heads\main" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\logs\refs\remotes\origin\main" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\objects\6f\9509c88bed7080d496fc5e1d87a9315e30549d" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\objects\b9\6d0c71fdec4efd96c4a04f2b1ed24d76f00e25" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\objects\df\e0770424b2a19faf507a501ebfc23be8f54e7b" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\refs\heads\main" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\refs\remotes\origin\HEAD" />
+    <None Include="wwwroot\website\Restorat-on-Web-S-te\.git\refs\remotes\origin\main" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.16">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\website\Restorat-on-Web-S-te\.git\objects\info\" />
+    <Folder Include="wwwroot\website\Restorat-on-Web-S-te\.git\objects\pack\" />
+    <Folder Include="wwwroot\website\Restorat-on-Web-S-te\.git\refs\tags\" />
+  </ItemGroup>
+
+</Project>

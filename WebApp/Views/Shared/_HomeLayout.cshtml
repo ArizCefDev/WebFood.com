@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<partial name="~/Views/Partials/_HeaderPartial.cshtml" />
+<body>
+    <!-- Header Section Start -->
+    <partial name="~/Views/Partials/_NavBarPartial.cshtml" />
+    <!-- Header Section End -->
+    <!-- Home Section Start -->
+    <partial name="~/Views/Partials/_BannerPartial.cshtml" />
+    <!-- Home Section End -->
+    @RenderBody()
+    <!-- Footer Section Start -->
+    <partial name="~/Views/Partials/_FooterPartial.cshtml" />
+
+    <!-- Footer Section End -->
+
+    <script type="text/javascript" src="~/website/app.js"></script>
+</body>
+</html>
