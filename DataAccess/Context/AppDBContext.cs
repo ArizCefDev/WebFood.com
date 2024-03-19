@@ -17,6 +17,8 @@ namespace DataAccess.Context
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Site> Sites { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<User> Users { get; set; }
        
         public AppDBContext(DbContextOptions<AppDBContext> options)

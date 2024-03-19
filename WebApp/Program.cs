@@ -24,7 +24,8 @@ var mappingConfig = new MapperConfiguration(mc =>
 builder.Services.AddSingleton(mappingConfig.CreateMapper());
 
 ////Services
-builder.Services.AddScoped<IAboutService,AboutService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IMenuSerice, MenuSerice>();
 
 
 var app = builder.Build();

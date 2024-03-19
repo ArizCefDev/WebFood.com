@@ -1,73 +1,25 @@
-﻿
+﻿@model IEnumerable<DTO.EntityDTO.MenuDTO>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_PageLayout.cshtml";
 }
 
-<!-- Products Section Start -->
-<section class="products" id="products">
+<section class="menu" id="menu">
     <h1 class="heading">Özəl <span>menyular</span></h1>
     <div class="box-container">
-        <div class="box">
-            <div class="box-head">
-                <span class="title">MINI BURGER</span>
-                <a href="#" class="name">Bacon Burger</a>
-            </div>
-            <div class="image">
-                <img src="~/website/images/product-1.png" alt="products" />
-            </div>
-            <div class="box-bottom">
-                <div class="info">
-                    <b class="price">$6.00</b>
-                    <span class="amount">110gr / 300 Cal</span>
+        @foreach (var item in Model)
+        {
+            <div class="box">
+                <div class="box-head">
+                    <img src="@item.Image" alt="menu" />
+                    <span class="menu-category">@item.CategoryID</span>
+                    <h3>@item.Title</h3>
+                    <div class="price">@item.Price ₼ <span>@item.Discount ₼</span></div>
                 </div>
-                <div class="product-btn">
-                    <a href="#">
-                        <i class="fas fa-plus"></i>
-                    </a>
+                <div class="box-bottom">
+                    <a href="#" class="btn">sifarış ver</a>
                 </div>
             </div>
-        </div>
-        <div class="box">
-            <div class="box-head">
-                <span class="title">MINI BURGER</span>
-                <a href="#" class="name">Bacon Burger</a>
-            </div>
-            <div class="image">
-                <img src="~/website/images/product-2.png" alt="products" />
-            </div>
-            <div class="box-bottom">
-                <div class="info">
-                    <b class="price">$6.00</b>
-                    <span class="amount">110gr / 300 Cal</span>
-                </div>
-                <div class="product-btn">
-                    <a href="#">
-                        <i class="fas fa-plus"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="box dark-bg">
-            <div class="box-head">
-                <span class="title">MINI BURGER</span>
-                <a href="#" class="name">Bacon Burger</a>
-            </div>
-            <div class="image">
-                <img src="~/website/images/dark-product.jpg" alt="products" />
-            </div>
-            <div class="box-bottom">
-                <div class="info">
-                    <b class="price">$6.00</b>
-                    <span class="amount">110gr / 300 Cal</span>
-                </div>
-                <div class="product-btn">
-                    <a href="#">
-                        <i class="fas fa-plus"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </section>
-<!-- Products Section End -->
