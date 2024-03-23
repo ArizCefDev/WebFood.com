@@ -1,4 +1,4 @@
-﻿
+﻿@model DTO.EntityDTO.MessageDTO
 @{
     ViewData["Title"] = "Add";
     Layout = "~/Views/Shared/_PageLayout.cshtml";
@@ -8,25 +8,22 @@
 <section class="contact" id="contact">
     <h1 class="heading">Contact <span>us</span></h1>
     <div class="row">
-        <iframe class="map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d945551.4822276899!2d44.875538067703346!3d39.97812726841381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2zQmFrw7w!5e0!3m2!1str!2saz!4v1709019119180!5m2!1str!2saz"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <form>
-            <h3>get in touch</h3>
+        @await Component.InvokeAsync("MapList")
+        <form method="post">
+            <h3>bizə mesaj yazın</h3>
             <div class="inputBox">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Name" />
+                <input type="text" asp-for="Name" placeholder="Adınız" />
             </div>
             <div class="inputBox">
                 <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="Email" />
+                <input type="email" asp-for="Email" placeholder="Emailiniz" />
             </div>
             <div class="inputBox">
                 <i class="fas fa-phone"></i>
-                <input type="number" placeholder="Phone" />
+                <input type="number" asp-for="Phone" placeholder="Telefon nömrəniz" />
             </div>
-            <input type="submit" class="btn" value="contact now" />
+            <input type="submit" class="btn" value="Göndər" />
         </form>
     </div>
 </section>

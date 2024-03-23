@@ -1,0 +1,9 @@
+﻿@model IEnumerable<DTO.EntityDTO.ContactDTO>
+
+@foreach (var item in Model)
+{
+    <iframe class="map"
+            src="@item.Map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+}

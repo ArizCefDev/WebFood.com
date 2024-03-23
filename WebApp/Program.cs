@@ -26,6 +26,9 @@ builder.Services.AddSingleton(mappingConfig.CreateMapper());
 ////Services
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IMenuSerice, MenuSerice>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<IMessageService, MessageService>();
 
 
 var app = builder.Build();
@@ -37,6 +40,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseStatusCodePagesWithReExecute("/Error/Error1", "?code={0}");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
