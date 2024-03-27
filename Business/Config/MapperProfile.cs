@@ -12,7 +12,8 @@ namespace Business.Config
             CreateMap<About, AboutDTO>();
 
             CreateMap<MenuDTO, Menu>();
-            CreateMap<Menu, MenuDTO>();
+            CreateMap<Menu, MenuDTO>()
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(c => c.Category.Name));
 
             CreateMap<CustomerDTO, Customer>();
             CreateMap<Customer, CustomerDTO>();

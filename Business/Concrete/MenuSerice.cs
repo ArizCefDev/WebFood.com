@@ -3,6 +3,7 @@ using Business.Abstract;
 using DataAccess.Context;
 using DataAccess.Entity;
 using DTO.EntityDTO;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,14 @@ namespace Business.Concrete
     {
         public MenuSerice(IMapper mapper, AppDBContext dbContext) : base(mapper, dbContext)
         {
+        }
+
+        public IEnumerable<MenuDTO> GetAllInclude()
+        {
+            var ent = _dBSet.Include(x => x.Category).ToList();
+
+            var rsdto = _mapper.Map<IEnumerable<MenuDTO>>(ent);
+            return rsdto;
         }
     }
 }

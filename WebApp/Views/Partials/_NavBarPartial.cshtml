@@ -20,10 +20,13 @@
             <i class="fas fa-bars"></i>
         </button>
     </div>
-    <div class="search-form">
-        <input type="text" class="search-input" id="search-box" placeholder="search-here">
-        <i class="fas fa-search"></i>
-    </div>
+    <form asp-controller="Menu" asp-action="Index" method="get">
+
+        <div class="search-form">
+            <input type="text" value="@ViewBag.i" class="search-input" name="search" id="search-box" placeholder="Menu axtar">
+            <i class="fas fa-search"></i>
+        </div>
+    </form>
     <div class="cart-items-container">
         <div class="cart-item">
             <i class="fas fa-times"></i>

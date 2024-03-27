@@ -14,7 +14,7 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            var values = _menuSerice.GetAll().Where(x=>x.Status== "special");
+            var values = _menuSerice.GetAllInclude().Where(x=>x.Status== "special");
             return View(values);
         }
     }

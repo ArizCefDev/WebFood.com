@@ -25,6 +25,7 @@ namespace DTO.EntityDTO
         public string? Status { get; set; }
         public DateTime Date { get; set; }
         public int CategoryID { get; set; }
+        public string? CategoryName { get; set; }
         public CategoryDTO? CategoryDTO { get; set; }
     }
 }

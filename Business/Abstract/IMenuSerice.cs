@@ -11,5 +11,7 @@ namespace Business.Abstract
     public interface IMenuSerice 
         : IBaseService<MenuDTO, Menu, MenuDTO>
     {
+        IEnumerable<MenuDTO> GetAllInclude();
+
     }
 }

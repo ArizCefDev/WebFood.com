@@ -1,0 +1,31 @@
+﻿@model IEnumerable<DTO.EntityDTO.CustomerDTO>
+
+
+<!-- Review Section Start -->
+<section class="review" id="review">
+    <h1 class="heading">Müştəri <span>Rəyləri</span></h1>
+    <div class="box-container">
+        @foreach (var item in Model)
+        {
+            <div class="box">
+                <img src="~/website/images/quote.png" alt="quote" />
+                <p>
+                    @item.Text
+                </p>
+                <img src="@item.imageURL" alt="avatar" class="user" />
+                <h3>@item.Name @item.Surname</h3>
+                <div class="stars">
+                    @for (int i = 0; i < Convert.ToInt16(item.Rate); i++)
+                    {
+                        <i class="fa-solid fa-star"></i>
+                    }
+                    @for (int i = 0; i < 5 - Convert.ToInt16(item.Rate); i++)
+                    {
+                        <i class="fa-regular fa-star"></i>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<!-- Review Section End -->
