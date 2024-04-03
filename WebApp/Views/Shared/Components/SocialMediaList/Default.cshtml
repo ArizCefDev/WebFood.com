@@ -1,0 +1,8 @@
+﻿@model IEnumerable<DTO.EntityDTO.SocialMediaDTO>
+
+<div class="share">
+    @foreach (var item in Model)
+    {
+        <a href="@item.LinkURL" class="@item.IconURL"></a>
+    }
+</div>

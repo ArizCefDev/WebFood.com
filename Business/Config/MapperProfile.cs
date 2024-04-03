@@ -24,10 +24,8 @@ namespace Business.Config
             CreateMap<MessageDTO, Message>();
             CreateMap<Message, MessageDTO>();
 
-            //CreateMap<GroupJoinDTO, GroupJoin>();
-            //CreateMap<GroupJoin, GroupJoinDTO>()
-            //    .ForMember(dest => dest.LanguageName, opt => opt.MapFrom(c => c.GroupJoinCategory.Language))
-            //    .ForMember(dest => dest.StartDateName, opt => opt.MapFrom(c => c.GroupJoinCategory.StartDate));
+            CreateMap<SocialMediaDTO, SocialMedia>();
+            CreateMap<SocialMedia, SocialMediaDTO>();
 
         }
     }

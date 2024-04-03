@@ -29,6 +29,7 @@ builder.Services.AddScoped<IMenuSerice, MenuSerice>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<IMessageService, MessageService>();
+builder.Services.AddScoped<ISocialMediaService, SocialMediaService>();
 
 
 var app = builder.Build();

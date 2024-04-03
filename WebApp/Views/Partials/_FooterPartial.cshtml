@@ -1,25 +1,14 @@
 ﻿<section class="footer">
-    <div class="search">
-        <input type="text" class="search-input" placeholder="search">
-        <button class="btn  btn-primary">search</button>
-    </div>
-    <div class="share">
-        <a href="#" class="fab fa-facebook"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-        <a href="#" class="fab fa-pinterest"></a>
-    </div>
+    @await Component.InvokeAsync("SocialMediaList")
     <div class="links">
-        <a href="#" class="active">Home</a>
-        <a href="#">About</a>
-        <a href="#">Menu</a>
-        <a href="#">Products</a>
-        <a href="#">Review</a>
-        <a href="#">Contact</a>
-        <a href="#">Blogs</a>
+        <a asp-controller="Home" asp-action="Index" class="active">Menyular</a>
+        <a asp-controller="Special" asp-action="Index">Özəl</a>
+        <a asp-controller="About" asp-action="Index">Haqqımızda</a>
+        <a asp-controller="Contact" asp-action="Add">Bizimlə Əlaqə</a>
+        <a asp-controller="Review" asp-action="Index">Rəylər</a>
+        <a asp-controller="Admin" asp-action="Index">Admin</a>
     </div>
     <div class="credit">
-        created by <span>Davud Aslanov</span> | all right reserved
+        created by <span>Ariz Jafarli</span> | all right reserved
     </div>
 </section>
