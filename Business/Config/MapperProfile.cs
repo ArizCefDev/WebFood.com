@@ -27,6 +27,10 @@ namespace Business.Config
             CreateMap<SocialMediaDTO, SocialMedia>();
             CreateMap<SocialMedia, SocialMediaDTO>();
 
+            CreateMap<CategoryDTO, Category>();
+            CreateMap<Category, CategoryDTO>();
+
+
         }
     }
 }

@@ -1,18 +1,15 @@
-﻿@model IEnumerable<DTO.EntityDTO.AboutDTO>
+﻿@model IEnumerable<DTO.EntityDTO.CategoryDTO>
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Category";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="xs">
     <h3>Cədvəllər</h3>
-    @if (ViewBag.count == 0)
-    {
-        <a asp-controller="Admin" asp-action="AboutAdd" class="btn btn-info">Yeni</a>
-    }
+    <a asp-controller="Admin" asp-action="CategoryAdd" class="btn btn-info">Yeni</a>
     <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
         <div class="panel-heading">
-            <h2>Haqqımızda Cədvəli</h2>
+            <h2>Kateqoriyalar Cədvəli</h2>
             <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
         </div>
         <div class="panel-body no-padding" style="display: block;">
@@ -20,10 +17,7 @@
                 <thead>
                     <tr class="warning">
                         <th>#</th>
-                        <th>Foto</th>
-                        <th>Başlıq</th>
-                        <th>Mətn</th>
-                        <th>Redaktə</th>
+                        <th>Ad</th>
                         <th>Sil</th>
                     </tr>
                 </thead>
@@ -32,14 +26,9 @@
                     {
                         <tr>
                             <td>@item.ID</td>
-                            <td style="width:20%"><img src="@item.ImageURL" style="width:100%; height:100%" /></td>
-                            <td>@item.Title</td>
-                            <td>@item.Text</td>
+                            <td>@item.Name</td>
                             <td>
-                                <a asp-controller="Admin" asp-action="AboutUpdate" asp-route-id="@item.ID" class="btn btn-primary">Redaktə</a>
-                            </td>
-                            <td>
-                                <a asp-controller="Admin" asp-action="AboutDelete" asp-route-id="@item.ID" class="btn btn-danger">Sil</a>
+                                <a asp-controller="Admin" asp-action="CategoryDelete" asp-route-id="@item.ID" class="btn btn-danger">Sil</a>
                             </td>
                         </tr>
                     }
@@ -48,4 +37,5 @@
         </div>
     </div>
 </div>
+
 
