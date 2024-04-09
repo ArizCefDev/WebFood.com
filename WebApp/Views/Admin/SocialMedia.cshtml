@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DTO.EntityDTO.SocialMediaDTO>
+
+@{
+    ViewData["Title"] = "SocialMedia";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="xs">
+    <h3>Cədvəllər</h3>
+    <a asp-controller="Admin" asp-action="SocialMediaAdd" class="btn btn-info">Yeni</a>
+    <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+        <div class="panel-heading">
+            <h2>Hesablar Cədvəli</h2>
+            <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+        </div>
+        <div class="panel-body no-padding" style="display: block;">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="warning">
+                        <th>#</th>
+                        <th>Ikon</th>
+                        <th>URL</th>
+                        <th>Redaktə</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.IconURL</td>
+                            <td><a href="@item.LinkURL">@item.LinkURL</a></td>
+                            <td><a asp-controller="Admin" asp-action="SocialMediaUpdate" asp-route-id="@item.ID" class="btn btn-warning">Redaktə</a></td>
+                            <td><a asp-controller="Admin" asp-action="SocialMediaDelete" asp-route-id="@item.ID" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

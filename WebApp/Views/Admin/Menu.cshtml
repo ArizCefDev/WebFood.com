@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DTO.EntityDTO.MenuDTO>
+
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="xs">
+    <h3>Cədvəllər</h3>
+
+    <a asp-controller="Admin" asp-action="MenuAdd" class="btn btn-info">Yeni</a>
+    <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+        <div class="panel-heading">
+            <h2>Menyular Cədvəli</h2>
+            <div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+        </div>
+        <div class="panel-body no-padding" style="display: block;">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="warning">
+                        <th>#</th>
+                        <th>Foto</th>
+                        <th>Başlıq</th>
+                        <th>Qiymət</th>
+                        <th>Endirimli</th>
+                        <th>Qram</th>
+                        <th>Kalori</th>
+                        <th>Status</th>
+                        <th>Tarix</th>
+                        <th>Kateqoriya</th>
+                        <th>Redaktə</th>
+                        <th>Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td style="width:20%"><img src="@item.Image" style="width:100%; height:100%" /></td>
+                            <td>@item.Title</td>
+                            <td>@item.Price</td>
+                            <td>@item.Discount</td>
+                            <td>@item.Gram</td>
+                            <td>@item.Calori</td>
+                            <td>@item.Status</td>
+                            <td>@item.Date.ToString("dd-MMM-yyyy")</td>
+                            <td>@item.CategoryName</td>
+                            <td>
+                                <a asp-controller="Admin" asp-action="MenuUpdate" asp-route-id="@item.ID" class="btn btn-primary">Redaktə</a>
+                            </td>
+                            <td>
+                                <a asp-controller="Admin" asp-action="MenuDelete" asp-route-id="@item.ID" class="btn btn-danger">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

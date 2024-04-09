@@ -2,6 +2,7 @@
 using DataAccess.Context;
 using DTO.EntityDTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebApp.Controllers
 {
@@ -11,14 +12,18 @@ namespace WebApp.Controllers
         private readonly IMessageService _messageService;
         private readonly IContactService _contactService;
         private readonly ICategoryService _categoryService;
+        private readonly ISocialMediaService _socialMediaService;
+        private readonly IMenuSerice _menuSerice;
         private readonly AppDBContext _dBContext;
 
-        public AdminController(IAboutService aboutService, IMessageService messageService, IContactService contactService, ICategoryService categoryService, AppDBContext dBContext)
+        public AdminController(IAboutService aboutService, IMessageService messageService, IContactService contactService, ICategoryService categoryService, ISocialMediaService socialMediaService, IMenuSerice menuSerice, AppDBContext dBContext)
         {
             _aboutService = aboutService;
             _messageService = messageService;
             _contactService = contactService;
             _categoryService = categoryService;
+            _socialMediaService = socialMediaService;
+            _menuSerice = menuSerice;
             _dBContext = dBContext;
         }
 
@@ -149,6 +154,116 @@ namespace WebApp.Controllers
         }
         #endregion
 
+        #region SocialMedia Page
+        public IActionResult SocialMedia()
+        {
+            var values = _socialMediaService.GetAll();
+            return View(values);
+        }
 
+        [HttpGet]
+        public IActionResult SocialMediaAdd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SocialMediaAdd(SocialMediaDTO dto)
+        {
+            _socialMediaService.Insert(dto);
+            return RedirectToAction("SocialMedia");
+        }
+
+        [HttpGet]
+        public IActionResult SocialMediaUpdate(int id)
+        {
+            var values = _socialMediaService.GetById(id);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult SocialMediaUpdate(SocialMediaDTO dto)
+        {
+            _socialMediaService.Update(dto);
+            return RedirectToAction("SocialMedia");
+        }
+
+        public IActionResult SocialMediaDelete(int id)
+        {
+            _socialMediaService.Delete(id);
+            return RedirectToAction("SocialMedia");
+        }
+        #endregion
+
+
+        #region Menu Page
+        public IActionResult Menu()
+        {
+            var values = _menuSerice.GetAllInclude();
+            return View(values);
+        }
+
+        [HttpGet]
+        public IActionResult MenuAdd()
+        {
+            IEnumerable<SelectListItem> valueGet = (from x in _categoryService.GetAll()
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.Name,
+                                                        Value = x.ID.ToString()
+                                                    }).ToList();
+            ViewBag.c = valueGet;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult MenuAdd(MenuDTO dto)
+        {
+            IEnumerable<SelectListItem> valueGet = (from x in _categoryService.GetAll()
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.Name,
+                                                        Value = x.ID.ToString()
+                                                    }).ToList();
+            ViewBag.c = valueGet;
+            dto.Date=DateTime.Now;
+            _menuSerice.Insert(dto);
+            return RedirectToAction("Menu");
+        }
+
+        [HttpGet]
+        public IActionResult MenuUpdate(int id)
+        {
+            IEnumerable<SelectListItem> valueGet = (from x in _categoryService.GetAll()
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.Name,
+                                                        Value = x.ID.ToString()
+                                                    }).ToList();
+            ViewBag.c = valueGet;
+            var values = _menuSerice.GetById(id);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult MenuUpdate(MenuDTO dto)
+        {
+            IEnumerable<SelectListItem> valueGet = (from x in _categoryService.GetAll()
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.Name,
+                                                        Value = x.ID.ToString()
+                                                    }).ToList();
+            ViewBag.c = valueGet;
+            _menuSerice.Update(dto);
+            return RedirectToAction("Menu");
+        }
+
+        public IActionResult MenuDelete(int id)
+        {
+            _menuSerice.Delete(id);
+            return RedirectToAction("Menu");
+        }
+        #endregion
     }
 }
