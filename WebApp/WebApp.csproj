@@ -54,6 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\website\Restorat-on-Web-S-te\.git\objects\info\" />
     <Folder Include="wwwroot\website\Restorat-on-Web-S-te\.git\objects\pack\" />
     <Folder Include="wwwroot\website\Restorat-on-Web-S-te\.git\refs\tags\" />

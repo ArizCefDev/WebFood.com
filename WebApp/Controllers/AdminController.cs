@@ -1,11 +1,14 @@
 ﻿using Business.Abstract;
 using DataAccess.Context;
 using DTO.EntityDTO;
+using Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WebApp.Controllers
 {
+    [Authorize(Roles =RoleKeywords.AdminRole)]
     public class AdminController : Controller
     {
         private readonly IAboutService _aboutService;
@@ -15,8 +18,9 @@ namespace WebApp.Controllers
         private readonly ISocialMediaService _socialMediaService;
         private readonly IMenuSerice _menuSerice;
         private readonly AppDBContext _dBContext;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AdminController(IAboutService aboutService, IMessageService messageService, IContactService contactService, ICategoryService categoryService, ISocialMediaService socialMediaService, IMenuSerice menuSerice, AppDBContext dBContext)
+        public AdminController(IAboutService aboutService, IMessageService messageService, IContactService contactService, ICategoryService categoryService, ISocialMediaService socialMediaService, IMenuSerice menuSerice, AppDBContext dBContext, IWebHostEnvironment webHostEnvironment)
         {
             _aboutService = aboutService;
             _messageService = messageService;
@@ -25,6 +29,7 @@ namespace WebApp.Controllers
             _socialMediaService = socialMediaService;
             _menuSerice = menuSerice;
             _dBContext = dBContext;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -37,14 +42,6 @@ namespace WebApp.Controllers
             ViewBag.count = _dBContext.Abouts.Count();
 
             var values = _aboutService.GetAll();
-            //if (values==null)
-            //{
-            //    ViewBag.v= "visibility:block";
-            //}
-            //else
-            //{
-            //    ViewBag.v = "visibility:hidden";
-            //}
             return View(values);
         }
 
@@ -55,8 +52,19 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AboutAdd(AboutDTO dto)
+        public IActionResult AboutAdd(AboutDTO dto, IFormFile photo)
         {
+            if (photo == null || photo.Length == 0)
+            {
+                return Content("Foto secilmeyib");
+            }
+            else
+            {
+                var path = Path.Combine(_webHostEnvironment.WebRootPath, "images", photo.FileName);
+                var stream = new FileStream(path, FileMode.Create);
+                photo.CopyToAsync(stream);
+                dto.ImageURL = photo.FileName;
+            }
             _aboutService.Insert(dto);
             return RedirectToAction("About");
         }
@@ -69,8 +77,15 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AboutUpdate(AboutDTO dto)
+        public IActionResult AboutUpdate(AboutDTO dto,IFormFile photo)
         {
+            if (photo != null)
+            {
+                var path = Path.Combine(_webHostEnvironment.WebRootPath, "images", photo.FileName);
+                var stream = new FileStream(path, FileMode.Create);
+                photo.CopyToAsync(stream);
+                dto.ImageURL = photo.FileName;
+            }
             _aboutService.Update(dto);
             return RedirectToAction("About");
         }
@@ -86,7 +101,7 @@ namespace WebApp.Controllers
         public IActionResult Message()
         {
             var values = _messageService.GetAll();
-            return View(values.OrderByDescending(x=>x.ID));
+            return View(values.OrderByDescending(x => x.ID));
         }
 
         public IActionResult MessageDelete(int id)
@@ -226,7 +241,7 @@ namespace WebApp.Controllers
                                                         Value = x.ID.ToString()
                                                     }).ToList();
             ViewBag.c = valueGet;
-            dto.Date=DateTime.Now;
+            dto.Date = DateTime.Now;
             _menuSerice.Insert(dto);
             return RedirectToAction("Menu");
         }

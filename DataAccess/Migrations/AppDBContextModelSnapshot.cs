@@ -182,6 +182,37 @@ namespace DataAccess.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "User"
+                        });
+                });
+
+            modelBuilder.Entity("DataAccess.Entity.Rule", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Test")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Rules");
                 });
 
             modelBuilder.Entity("DataAccess.Entity.Site", b =>
@@ -253,6 +284,16 @@ namespace DataAccess.Migrations
                     b.HasIndex("RoleID");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            PasswordHash = ";���s��Zذ{p��ʼ��i�tUG�#)T",
+                            RoleID = 1,
+                            Salt = "QhKb1y6dfDF7hw==",
+                            Username = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("DataAccess.Entity.Menu", b =>

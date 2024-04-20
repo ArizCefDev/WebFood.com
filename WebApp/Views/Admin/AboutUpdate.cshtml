@@ -7,11 +7,14 @@
 <div class="xs">
     <h3>Redaktə Form</h3>
     <div class="well1 white">
-        <form method="post" class="form-floating ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-url ng-valid-pattern" novalidate="novalidate" ng-submit="submit()">
+        <form method="post"  enctype="multipart/form-data" class="form-floating ng-pristine ng-invalid ng-invalid-required ng-valid-email ng-valid-url ng-valid-pattern" novalidate="novalidate" ng-submit="submit()">
             <fieldset>
                 <div class="form-group">
+                    <img src="~/images/@Model.ImageURL" style="width:200px; height:200px; object-fit:contain" />
+                </div>
+                <div class="form-group">
                     <label class="control-label">Foto</label>
-                    <input type="text" asp-for="ImageURL" class="form-control1 ng-invalid ng-invalid-required ng-touched" ng-model="model.name" required="">
+                    <input type="file" name="photo" class="form-control1 ng-invalid ng-invalid-required ng-touched" ng-model="model.name" required="">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Başlıq</label>
@@ -21,6 +24,7 @@
                     <label class="control-label">Mətn</label>
                     <input type="text" asp-for="Text" class="form-control1 ng-invalid ng-invalid-required ng-touched" ng-model="model.password" required="">
                 </div>
+                <input type="hidden" asp-for="ImageURL" class="form-control1 ng-invalid ng-valid-email ng-invalid-required ng-touched" ng-model="model.email">
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Redaktə et</button>
                     <button type="reset" class="btn btn-default">Sıfırla</button>

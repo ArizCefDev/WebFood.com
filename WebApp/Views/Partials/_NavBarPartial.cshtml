@@ -8,7 +8,12 @@
         <a asp-controller="About" asp-action="Index">Haqqımızda</a>
         <a asp-controller="Contact" asp-action="Add">Bizimlə Əlaqə</a>
         <a asp-controller="Review" asp-action="Index">Rəylər</a>
-        <a asp-controller="Admin" asp-action="Index">Admin</a>
+        <a asp-controller="Login" asp-action="SignIn">Daxil ol</a>
+        <a asp-controller="Login" asp-action="SignUp">Qeydiyyat</a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="Admin" asp-action="Index">Admin</a>
+        }
     </nav>
     <div class="buttons">
         <button id="search-btn">

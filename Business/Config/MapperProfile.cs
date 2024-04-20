@@ -31,6 +31,10 @@ namespace Business.Config
             CreateMap<Category, CategoryDTO>();
 
 
+            CreateMap<UserDTO, User>();
+            CreateMap<User, UserDTO>();
+
+
         }
     }
 }
